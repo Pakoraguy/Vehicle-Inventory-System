@@ -23,6 +23,37 @@ public class VehicleDAO {
 		return connection;
 	}
 
+	public int getLatestVehicle_id() throws SQLException {
+		int latest_vehicle_id = -1;
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet result = null;
+		String query = "SELECT * FROM vehicles ORDER BY vehicle_id DESC LIMIT 1;\r\n";
+		try {
+			connection = getDBConnection();
+			statement = connection.createStatement();
+			System.out.println("DBQuery: " + query);
+			result = statement.executeQuery(query);
+			while (result.next()) {
+				latest_vehicle_id = result.getInt("vehicle_id");
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (result != null) {
+				result.close();
+			}
+			if (statement != null) {
+				statement.close();
+			}
+			if (connection != null) {
+				connection.close();
+			}
+		}
+		return latest_vehicle_id;
+	}
+	
 	public ArrayList<Vehicle> getAllVehicles() throws SQLException {
 		ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
 		Connection connection = null;
