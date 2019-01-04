@@ -106,7 +106,6 @@ public class VehicleDAO {
 			dbConnection = getDBConnection();
 			statement = dbConnection.createStatement();
 			System.out.println("DBQuery: " + query);
-			// execute SQL query
 			result = statement.executeQuery(query);
 
 			while (result.next()) {
@@ -142,7 +141,6 @@ public class VehicleDAO {
 			dbConnection = getDBConnection();
 			statement = dbConnection.createStatement();
 			System.out.println(query);
-			// execute SQL query
 			result = statement.executeUpdate(query);
 
 		} catch (SQLException e) {
@@ -179,7 +177,6 @@ public class VehicleDAO {
 			dbConnection = getDBConnection();
 			statement = dbConnection.createStatement();
 			System.out.println(query);
-			// execute SQL update
 			statement.executeUpdate(query);
 
 		} catch (SQLException e) {
@@ -214,7 +211,6 @@ public class VehicleDAO {
 			dbConnection = getDBConnection();
 			statement = dbConnection.createStatement();
 			System.out.println(query);
-			// execute SQL query
 			statement.executeUpdate(query);
 			ok = true;
 		} catch (SQLException e) {
